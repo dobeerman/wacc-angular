@@ -1,0 +1,45 @@
+<form [formGroup]="form">
+  <div class="row">
+
+    <div class="form-group col-sm-3">
+      <label for="e">Share of Equity</label>
+      <input type="number" step="0.1" class="form-control" name="e" required formControlName="e">
+
+      <span class="help-block" *ngIf="formErrors.e">{{ formErrors.e }}</span>
+    </div>
+
+    <div class="form-group col-sm-3">
+      <label for="re">Cost of Equity</label>
+      <input type="number" step="0.1" class="form-control" name="re" required formControlName="re">
+
+      <span class="help-block" *ngIf="formErrors.re">{{ formErrors.re }}</span>
+    </div>
+
+    <div class="form-group col-sm-3">
+      <label for="d">Share of Debt</label>
+      <input type="number" step="0.1" class="form-control" name="d" required formControlName="d">
+
+      <span class="help-block" *ngIf="formErrors.d">{{ formErrors.d }}</span>
+    </div>
+
+    <div class="form-group col-sm-3">
+      <label for="rd">Cost of Debt</label>
+      <input type="number" step="0.1" class="form-control" name="rd" required formControlName="rd">
+
+      <span class="help-block" *ngIf="formErrors.rd">{{ formErrors.rd }}</span>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="form-group col-sm-3">
+      <label for="t">Corporate tax</label>
+      <input type="number" step="0.1" class="form-control" name="t" required formControlName="t">
+
+      <span class="help-block" *ngIf="formErrors.t">{{ formErrors.t }}</span>
+    </div>
+
+  </div>
+</form>
+<span class="lead">{{ waccCalc }}</span>
