@@ -26,11 +26,11 @@ if (function_exists($func)) {
  */
 // getUSDrate($firebase);
 // getCBOE($firebase);
+// getRusBondsData($firebase);
 
 /**
  * Monthly cron run
  */
-// getRusBondsData($firebase);
 // parseBetaEmerg($firebase);
 // getNonfin($firebase);
 
