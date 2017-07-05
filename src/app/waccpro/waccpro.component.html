@@ -1,3 +1,108 @@
-<p>
-  waccpro works!
-</p>
+<div *ngIf="betaemerg">
+  <form [formGroup]="rForm">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>WACC Pro</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <small>
+        The weighted average cost of capital (WACC) is the rate that a company is expected to pay on average to all its security
+        holders to finance its assets.
+      </small>
+      </div>
+    </div>
+
+    <hr/>
+
+    <div class="form-group">
+      <label for="industry">Industry</label>
+      <select name="industry" formControlName="industry" class="form-control">
+        <option value="" selected="selected">–– Make your choose ––</option>
+        <option *ngFor="let item of betaemerg" 
+                [ngValue]="item.ubeta" >
+                  {{ item.industry }}
+        </option>
+      </select>
+    </div>
+                <!--[selected]="item.industry == selected.industry">-->
+
+    <div class="form-group">
+      <label for="shareOfEquity">Share of equity</label>
+      <div class="input-group">
+        <input type="number" step="0.1" name="shareOfEquity" formControlName="shareOfEquity" class="form-control">
+        <span class="input-group-addon">%</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="totalRevenue">Total revenue</label>
+      <div class="input-group">
+        <input type="number" step="0.1" name="totalRevenue" formControlName="totalRevenue" class="form-control">
+        <span class="input-group-addon">RUB, mil</span>
+      </div>
+    </div>
+    <hr/>
+
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="costOfDebtCheckbox" formControlName="costOfDebtCheckbox">I know cost of debt
+        </label>
+      </div>
+    </div>
+    <hr *ngIf="!rForm.get('costOfDebtCheckbox').value" />
+
+    <div class="form-group" *ngIf="rForm.get('costOfDebtCheckbox').value">
+      <label for="costOfDebtInputbox">Cost of debt</label>
+      <div class="input-group">
+        <input type="number" step="0.1" name="costOfDebtInputbox" formControlName="costOfDebtInputbox" class="form-control">
+        <span class="input-group-addon">%</span>
+      </div>
+      <hr/>
+
+    </div>
+
+    <div class="form-group">
+      <label for="baseOfDebtCalc">What is the base for cost of debt?</label>
+      <div class="radio">
+        <label>
+            <input type="radio" name="baseOfDebtCalc" value="avrg" checked="" formControlName="baseOfDebtCalc">Avrg market rate
+          </label>
+      </div>
+      <div class="radio">
+        <label>
+            <input type="radio" name="baseOfDebtCalc" value="spread" formControlName="baseOfDebtCalc">Corp Spread
+          </label>
+      </div>
+      <hr *ngIf="rForm.get('baseOfDebtCalc').value == 'avrg'" />
+    </div>
+
+    <div class="form-group" *ngIf="rForm.get('baseOfDebtCalc').value == 'spread'">
+      <label for="ebit">EBIT</label>
+      <input type="number" step="0.1" name="ebit" formControlName="ebit" class="form-control">
+      <label for="interest">Interest</label>
+      <input type="number" step="0.1" name="interest" formControlName="interest" class="form-control">
+      <hr/>
+    </div>
+
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="betaCorrect" formControlName="betaCorrect">Adjust the country risk by beta-factor?
+        </label>
+      </div>
+    </div>
+
+  </form>
+  <hr>
+
+  <h3 *ngFor="let item of WaccResult">WACC: {{ item.val }} <small>%, {{ item.key }}</small></h3>
+
+</div>
+<div *ngIf="!betaemerg" class="container">
+  <span class="text-center glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>&nbsp;&nbsp;Loading data...
+</div>

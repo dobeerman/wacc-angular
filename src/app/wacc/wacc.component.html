@@ -1,45 +1,57 @@
 <form [formGroup]="form">
+  <small>
+    The weighted average cost of capital (WACC) is the rate that a company is expected to pay on average to all its security
+    holders to finance its assets.
+  </small>
+  <!--<div class="row">
+    <div class="notice col-sm-12 col-xs-12"><b>See also:</b> <a href="http://calkoo.com/en/capital-asset-pricing-model" onclick="javascript:pageTracker._trackPageview('/outgoing/capm');">Capital Asset Pricing Model (CAPM)</a></div>
+  </div><br/>-->
+  <hr/>
+
   <div class="row">
-
-    <div class="form-group col-sm-3">
-      <label for="e">Share of Equity</label>
+    <div class="form-group float-label-control">
+      <label for="e">Total Equity</label>
       <input type="number" step="0.1" class="form-control" name="e" required formControlName="e">
-
-      <span class="help-block" *ngIf="formErrors.e">{{ formErrors.e }}</span>
+      <span class="text-danger" *ngIf="formErrors.e">{{ formErrors.e }}</span>
     </div>
+  </div>
 
-    <div class="form-group col-sm-3">
+  <div class="row">
+    <div class="form-group float-label-control">
       <label for="re">Cost of Equity</label>
       <input type="number" step="0.1" class="form-control" name="re" required formControlName="re">
-
-      <span class="help-block" *ngIf="formErrors.re">{{ formErrors.re }}</span>
+      <span class="text-danger" *ngIf="formErrors.re">{{ formErrors.re }}</span>
     </div>
-
-    <div class="form-group col-sm-3">
-      <label for="d">Share of Debt</label>
-      <input type="number" step="0.1" class="form-control" name="d" required formControlName="d">
-
-      <span class="help-block" *ngIf="formErrors.d">{{ formErrors.d }}</span>
-    </div>
-
-    <div class="form-group col-sm-3">
-      <label for="rd">Cost of Debt</label>
-      <input type="number" step="0.1" class="form-control" name="rd" required formControlName="rd">
-
-      <span class="help-block" *ngIf="formErrors.rd">{{ formErrors.rd }}</span>
-    </div>
-
   </div>
 
   <div class="row">
+    <div class="form-group float-label-control">
+      <label for="d">Total Debt</label>
+      <input type="number" step="0.1" class="form-control" name="d" required formControlName="d">
+      <span class="text-danger" *ngIf="formErrors.d">{{ formErrors.d }}</span>
+    </div>
+  </div>
 
-    <div class="form-group col-sm-3">
+  <div class="row">
+    <div class="form-group float-label-control">
+      <label for="rd">Cost of Debt</label>
+      <input type="number" step="0.1" class="form-control" name="rd" required formControlName="rd">
+      <span class="text-danger" *ngIf="formErrors.rd">{{ formErrors.rd }}</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group float-label-control">
       <label for="t">Corporate tax</label>
       <input type="number" step="0.1" class="form-control" name="t" required formControlName="t">
-
-      <span class="help-block" *ngIf="formErrors.t">{{ formErrors.t }}</span>
+      <span class="text-danger" *ngIf="formErrors.t">{{ formErrors.t }}</span>
     </div>
+  </div>
 
+  <div *ngIf="waccCalc" class="row">
+    <div class="container">
+      <h2><small>Result</small> {{ waccCalc }}</h2>
+    </div>
   </div>
 </form>
-<span class="lead">{{ waccCalc }}</span>
+<script src="../assets/float-label.js"></script>
