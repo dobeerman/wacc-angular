@@ -5,9 +5,9 @@
 
 require __DIR__ .'/firebaselib/firebaseLib.php';
 
-const DEFAULT_URL = 'https://wacc-bf98e.firebaseio.com/';
-// const DEFAULT_TOKEN = 'tWn3X3H7o7bhqHKA9L3KcDyOTRYnZzwTfkfPs0Mp'; // https://my-first-fb-proj.firebaseio.com/
-const DEFAULT_TOKEN = 'vNcv1KWOBTjqFzH1O066eJOgFgJcoh7YDrZAIvIk';
+// FireBase login constants DEFAULT_URL and DEFAULT_TOKEN
+require __DIR__ .'/fbconst.php';
+
 const DEFAULT_PATH = '/messages';
 const DATA_PATH = '/data';
 const CBR_DAILYINFO= 'http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx?WSDL';
@@ -44,7 +44,7 @@ die();
 function getRusBondsData(&$firebase)
 {
     // Retrieve rusbonds
-    
+
     $str = file_get_contents('http://www.rusbonds.ru/tyield.asp?tool=124705');
 
     $dom = new DOMDocument();//Loads DOM document
@@ -62,7 +62,7 @@ function getRusBondsData(&$firebase)
     $rusbonds = (float)str_replace(',', '.', $td->item(11)->nodeValue); //Convert string to float
 
     $firebase->update(DATA_PATH, array('rusbonds' => $rusbonds)); // Will be created if null
-    
+
 
     // Retrieve yield
     $str = file_get_contents('http://www.rusbonds.ru/tyield.asp?tool=120973');
@@ -167,7 +167,7 @@ function parseERP(&$firebase)
     $excelObj = $excelReader->load($tmpfname);
     $worksheet = $excelObj->getSheetByName('Historical ERP');
     $lastRow = $worksheet->getHighestRow();
-    
+
     for ($i = $lastRow; $i > 0; $i--) {
         if ($ERP = $worksheet->getCell('H'. $i)->getValue()) {
             break;
@@ -211,7 +211,7 @@ function getUSDrate(&$firebase)
     $cbr = new SoapClient(CBR_DAILYINFO, array('soap_version' => SOAP_1_2, 'exceptions' => true));
     $date = $cbr->GetLatestDateTime();
     $result = $cbr->GetCursOnDateXML(array('On_date'=>$date->GetLatestDateTimeResult))->GetCursOnDateXMLResult->any;
-    
+
     if ($result) {
       // $incl[] = 'USD/RUB ran';
         $xml = new SimpleXMLElement($result);
