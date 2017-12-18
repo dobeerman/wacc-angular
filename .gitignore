@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# firebase
+/src/assets/fbconst.php
+
 # compiled output
 /dist
 /tmp
