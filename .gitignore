@@ -2,7 +2,7 @@
 
 # firebase
 /src/assets/fbconst.php
-/environments/*
+/src/environments/*
 
 # compiled output
 /dist
