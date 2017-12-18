@@ -1,3 +1,6 @@
+# WACC
+The weighted average cost of capital (WACC) is the rate that a company is expected to pay on average to all its security holders to finance its assets.
+
 # NgWacc
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
