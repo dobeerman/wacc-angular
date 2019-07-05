@@ -6,3 +6,25 @@ patch:
   SNYK-JS-LODASH-450202:
     - firebase > @firebase/firestore > grpc > lodash:
         patched: '2019-07-04T02:03:29.495Z'
+    - snyk > inquirer > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
+    - snyk > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
+    - snyk > snyk-config > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2019-07-05T16:42:57.728Z'
